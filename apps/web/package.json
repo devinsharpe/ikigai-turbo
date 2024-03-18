@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
+    "@repo/tailwind-config": "*",
     "@repo/typescript-config": "*",
     "@types/better-sqlite3": "^7.6.9",
     "@types/eslint": "^8.56.2",

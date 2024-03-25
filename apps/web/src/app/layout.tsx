@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import fonts from "@repo/ui/font";
+import { twMerge } from "@repo/ui/utils";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -18,7 +19,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`min-h-screen ${fonts.sans.className} ${fonts.mono.className}`}
+          className={twMerge(
+            "min-h-screen",
+            fonts.sans.className,
+            fonts.mono.className,
+          )}
         >
           {children}
         </body>

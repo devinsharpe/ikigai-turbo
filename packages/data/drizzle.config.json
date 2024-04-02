@@ -1,0 +1,7 @@
+{
+  "out": "./migrations",
+  "schema": "./src/schema/index.ts",
+  "driver": "libsql",
+  "verbose": true,
+  "strict": true
+}

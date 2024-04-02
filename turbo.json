@@ -12,6 +12,13 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "migrate": {
+      "cache": false
+    },
+    "generate-migrations": {
+      "cache": false,
+      "outputs": ["migrations/**"]
     }
   },
   "globalEnv": [

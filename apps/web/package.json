@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.9",
+    "@repo/data": "^0.0.0",
     "@t3-oss/env-nextjs": "^0.9.2",
     "better-sqlite3": "^9.4.3",
     "drizzle-orm": "^0.29.4",
@@ -44,6 +45,5 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.30.0"
-  },
-  "packageManager": "npm@9.8.1"
+  }
 }

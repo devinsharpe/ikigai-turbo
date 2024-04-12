@@ -3,11 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx",
-    "./font": "./src/font.ts",
-    "./utils": "./src/utils.ts"
+    "./components": "./src/index.ts",
+    "./lib": "./src/lib/index.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

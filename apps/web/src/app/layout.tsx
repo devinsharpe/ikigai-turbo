@@ -1,6 +1,5 @@
 import "../styles/globals.css";
-import fonts from "@repo/ui/font";
-import { twMerge } from "@repo/ui/utils";
+import { fonts, twMerge } from "@repo/ui/lib";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -20,10 +19,13 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={twMerge(
-            "min-h-screen",
+            "overflow-y-hidden bg-zinc-200 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100",
             fonts.sans.className,
             fonts.mono.className,
           )}
+          style={{
+            height: "100dvh",
+          }}
         >
           {children}
         </body>

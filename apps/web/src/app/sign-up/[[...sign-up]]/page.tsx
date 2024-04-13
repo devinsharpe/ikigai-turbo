@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import useInterval from "~/hooks/useInterval";
+import { HomeIcon } from "lucide-react";
 
 interface NewAccount {
   emailAddress: string;
@@ -365,22 +366,7 @@ export default function SignUpPage() {
           Sign In
         </Button>
         <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost}>
-          {/* TODO: Replace with Lucide component */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-home"
-          >
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
+          <HomeIcon />
         </Button>
       </div>
       <section className="flex h-full w-full flex-col items-center justify-center gap-4 overflow-y-auto rounded-tl-xl border-l border-t border-zinc-300 bg-white p-4 shadow-inner dark:border-zinc-700 dark:bg-zinc-800">

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import Button, { ButtonTheme } from "./Button";
 import { ComputerIcon, MoonIcon, SunIcon } from "lucide-react";

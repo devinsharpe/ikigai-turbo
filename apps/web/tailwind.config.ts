@@ -6,6 +6,7 @@ const config: Pick<Config, "content" | "darkMode" | "presets" | "plugins"> = {
   content: [
     "./src/app/**/*.tsx",
     "./src/components/**/*.tsx",
+    "./src/layouts/**/*.tsx",
     "../../packages/ui/**/*.tsx",
   ],
   darkMode: ["selector", '[data-mode="dark"]'],

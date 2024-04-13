@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FormEvent, useEffect, useState } from "react";
-import { useSignUp } from "@clerk/nextjs";
+import { useSignUp, useUser } from "@clerk/nextjs";
 import {
   AppIcon,
   Button,
@@ -16,7 +16,9 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import useInterval from "~/hooks/useInterval";
-import { HomeIcon } from "lucide-react";
+import AuthLayout from "~/layouts/Auth";
+import AuthHeader from "~/components/AuthHeader";
+import useAuthGuard from "~/hooks/useAuthGuard";
 
 interface NewAccount {
   emailAddress: string;
@@ -269,6 +271,8 @@ export default function SignUpPage() {
 
   const router = useRouter();
 
+  useAuthGuard(true, "/");
+
   const handleSignInWithApple = async () => {
     setIsLoadingApple(true);
     if (isLoaded && signUp) {
@@ -357,98 +361,65 @@ export default function SignUpPage() {
   if (!isLoaded) return null;
 
   return (
-    <div className="flex flex-col pl-4" style={{ height: "100dvh" }}>
-      <div className="flex w-full items-stretch justify-between gap-4 p-4">
-        <ThemeToggle />
-        <div className="flex items-stretch justify-end gap-4">
-          <Button
-            size={ButtonSize.Sm}
-            theme={ButtonTheme.Ghost}
-            className="items-center"
-            asChild
-          >
-            <Link href="/sign-in">Sign In</Link>
-          </Button>
-          <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost} asChild>
-            <Link href="/">
-              <HomeIcon />
-            </Link>
-          </Button>
-        </div>
-      </div>
-      <section className="flex h-full w-full flex-col items-center justify-center gap-4 overflow-y-auto rounded-tl-xl border-l border-t border-zinc-300 bg-white p-4 shadow-inner dark:border-zinc-700 dark:bg-zinc-800">
-        <div className="flex w-full max-w-96 flex-col">
-          <div className="flex w-full flex-col justify-center">
-            <div className="flex items-center gap-4">
-              <Link
-                href="/"
-                className="flex h-10   w-10 items-center justify-center rounded  text-zinc-600 hover:bg-zinc-100 focus:text-zinc-800 focus:outline-none focus:ring focus:ring-zinc-800/25 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:focus:text-zinc-50 dark:focus:ring-white/50"
-              >
-                <AppIcon className="duration-500" />
-              </Link>
-              <h1 className="text-2xl font-semibold md:text-4xl">Sign Up</h1>
+    <AuthLayout linkHref="sign-in">
+      <div className="flex w-full max-w-96 flex-col">
+        <AuthHeader title="Sign Up" />
+
+        {pendingVerification ? (
+          <>
+            <hr className="mt-4" />
+            <div className="py-4">
+              <h3 className="text-xl font-bold tracking-wide text-zinc-600 md:text-2xl dark:text-zinc-300">
+                Verify your email
+              </h3>
+              <p className="mt-2">
+                Enter the verification code sent to&nbsp;
+                <span className="underline">{form.emailAddress}</span>
+              </p>
             </div>
-            <h2 className="text-lg text-zinc-600 dark:text-zinc-300">
-              Live life a little differently
-            </h2>
-          </div>
+          </>
+        ) : (
+          <>
+            <div className="pb-2 pt-4">
+              <Button
+                className="w-full justify-center"
+                disabled={isLoadingApple}
+                loading={isLoadingApple}
+                theme={ButtonTheme.Outline}
+                onClick={handleSignInWithApple}
+              >
+                <span>Continue with Apple</span>
+              </Button>
+            </div>
 
-          {pendingVerification ? (
-            <>
-              <hr className="mt-4" />
-              <div className="py-4">
-                <h3 className="text-xl font-bold tracking-wide text-zinc-600 md:text-2xl dark:text-zinc-300">
-                  Verify your email
-                </h3>
-                <p className="mt-2">
-                  Enter the verification code sent to&nbsp;
-                  <span className="underline">{form.emailAddress}</span>
-                </p>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="pb-2 pt-4">
-                <Button
-                  className="w-full justify-center"
-                  disabled={isLoadingApple}
-                  loading={isLoadingApple}
-                  theme={ButtonTheme.Outline}
-                  onClick={handleSignInWithApple}
-                >
-                  <span>Continue with Apple</span>
-                </Button>
-              </div>
+            <div className="flex items-center justify-center gap-3 pt-2">
+              <hr className="w-full" />
+              <span className="text-zinc-600 dark:text-zinc-200">or</span>
+              <hr className="w-full" />
+            </div>
+          </>
+        )}
 
-              <div className="flex items-center justify-center gap-3 pt-2">
-                <hr className="w-full" />
-                <span className="text-zinc-600 dark:text-zinc-200">or</span>
-                <hr className="w-full" />
-              </div>
-            </>
-          )}
-
-          {pendingVerification ? (
-            <EmailVerificationForm
-              errors={verificationFormErrors}
-              isLoading={isLoadingVerification}
-              onBack={() => setPendingVerification(false)}
-              onChange={setVerificationCode}
-              onResendRequest={() => handleVerificationRequest(form)}
-              onSubmit={handleCodeVerification}
-              value={verificationCode}
-            />
-          ) : (
-            <NewAccountForm
-              errors={newAccountFormErrors}
-              isLoading={isLoadingEmail}
-              onChange={setForm}
-              onSubmit={handleVerificationRequest}
-              value={form}
-            />
-          )}
-        </div>
-      </section>
-    </div>
+        {pendingVerification ? (
+          <EmailVerificationForm
+            errors={verificationFormErrors}
+            isLoading={isLoadingVerification}
+            onBack={() => setPendingVerification(false)}
+            onChange={setVerificationCode}
+            onResendRequest={() => handleVerificationRequest(form)}
+            onSubmit={handleCodeVerification}
+            value={verificationCode}
+          />
+        ) : (
+          <NewAccountForm
+            errors={newAccountFormErrors}
+            isLoading={isLoadingEmail}
+            onChange={setForm}
+            onSubmit={handleVerificationRequest}
+            value={form}
+          />
+        )}
+      </div>
+    </AuthLayout>
   );
 }

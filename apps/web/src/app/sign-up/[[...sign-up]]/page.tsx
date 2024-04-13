@@ -10,6 +10,7 @@ import {
   FloatingInput,
   PinInput,
   PinNode,
+  ThemeToggle,
 } from "@repo/ui/components";
 
 import Link from "next/link";
@@ -357,17 +358,20 @@ export default function SignUpPage() {
 
   return (
     <div className="flex flex-col pl-4" style={{ height: "100dvh" }}>
-      <div className="flex w-full items-stretch justify-end gap-4 p-4">
-        <Button
-          size={ButtonSize.Sm}
-          theme={ButtonTheme.Ghost}
-          className="items-center"
-        >
-          Sign In
-        </Button>
-        <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost}>
-          <HomeIcon />
-        </Button>
+      <div className="flex w-full items-stretch justify-between gap-4 p-4">
+        <ThemeToggle />
+        <div className="flex items-stretch justify-end gap-4">
+          <Button
+            size={ButtonSize.Sm}
+            theme={ButtonTheme.Ghost}
+            className="items-center"
+          >
+            Sign In
+          </Button>
+          <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost}>
+            <HomeIcon />
+          </Button>
+        </div>
       </div>
       <section className="flex h-full w-full flex-col items-center justify-center gap-4 overflow-y-auto rounded-tl-xl border-l border-t border-zinc-300 bg-white p-4 shadow-inner dark:border-zinc-700 dark:bg-zinc-800">
         <div className="flex w-full max-w-96 flex-col">

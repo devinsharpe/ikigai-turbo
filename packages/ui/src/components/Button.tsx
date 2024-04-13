@@ -2,6 +2,7 @@
 
 import { twMerge } from "tailwind-merge";
 import Spinner from "./Spinner";
+import Slot, { AsChildProps } from "./Slot";
 
 export enum ButtonTheme {
   Primary = "primary",
@@ -19,11 +20,17 @@ export enum ButtonSize {
   Icon = "icon"
 }
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonComponentProps {
   loading?: boolean;
+  className?: string;
   size?: ButtonSize;
   theme?: ButtonTheme;
 }
+
+type ButtonSlotProps = AsChildProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+> &
+  ButtonComponentProps;
 
 const ButtonThemeStyles = {
   base: "inline-flex gap-2 rounded relative focus:outline-none focus:ring data-[loading=true]:text-transparent",
@@ -78,15 +85,17 @@ const ButtonThemeStyles = {
 };
 
 export default function Button({
+  asChild,
   className = "",
   loading = false,
   size = ButtonSize.Md,
   theme = ButtonTheme.Primary,
-  children,
   ...props
-}: ButtonProps) {
+}: ButtonSlotProps) {
+  const Component = asChild ? Slot : "button";
+
   return (
-    <button
+    <Component
       {...props}
       className={twMerge(
         ButtonThemeStyles.base,
@@ -97,16 +106,18 @@ export default function Button({
         className
       )}
       data-loading={loading}
-    >
-      <span>{children}</span>
-      {loading && (
-        <Spinner
-          className={twMerge(
-            "absolute left-50 top-50",
-            ButtonThemeStyles[theme].loading
-          )}
-        />
-      )}
-    </button>
+      children={
+        loading ? (
+          <div>
+            {props.children}
+            <span className="absolute inset-0 flex items-center justify-center">
+              <Spinner className={twMerge(ButtonThemeStyles[theme].loading)} />
+            </span>
+          </div>
+        ) : (
+          props.children
+        )
+      }
+    />
   );
 }

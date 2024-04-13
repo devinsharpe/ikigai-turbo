@@ -365,11 +365,14 @@ export default function SignUpPage() {
             size={ButtonSize.Sm}
             theme={ButtonTheme.Ghost}
             className="items-center"
+            asChild
           >
-            Sign In
+            <Link href="/sign-in">Sign In</Link>
           </Button>
-          <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost}>
-            <HomeIcon />
+          <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost} asChild>
+            <Link href="/">
+              <HomeIcon />
+            </Link>
           </Button>
         </div>
       </div>

@@ -45,7 +45,8 @@ export default function ThemeToggle(props: ThemeToggleProps) {
   };
 
   const CurrentIcon = useMemo(() => {
-    return themeOptions[themeIndex]!.component;
+    if (themeOptions[themeIndex]) return themeOptions[themeIndex]!.component;
+    else return null;
   }, [themeIndex]);
 
   useEffect(() => {
@@ -60,7 +61,7 @@ export default function ThemeToggle(props: ThemeToggleProps) {
 
   return (
     <Button theme={ButtonTheme.Ghost} {...props} onClick={handleToggle}>
-      <CurrentIcon />
+      {CurrentIcon && <CurrentIcon />}
     </Button>
   );
 }

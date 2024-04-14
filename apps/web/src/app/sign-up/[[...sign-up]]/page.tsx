@@ -340,7 +340,7 @@ export default function SignUpPage() {
       }
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
-        router.push("/");
+        router.push("/app");
       }
     } catch (err: any) {
       if (err.clerkError) {

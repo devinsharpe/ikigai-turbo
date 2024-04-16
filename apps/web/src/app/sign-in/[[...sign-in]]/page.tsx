@@ -176,33 +176,31 @@ export default function SignInPage() {
       <div className="flex w-full max-w-96 flex-col">
         <AuthHeader title="Sign In" />
 
-        <>
-          <div className="pb-2 pt-4">
-            <Button
-              className="w-full justify-center"
-              disabled={isLoadingApple}
-              loading={isLoadingApple}
-              theme={ButtonTheme.Outline}
-              onClick={handleSignInWithApple}
-            >
-              <span>Continue with Apple</span>
-            </Button>
-          </div>
+        <div className="pb-2 pt-4">
+          <Button
+            className="w-full justify-center"
+            disabled={isLoadingApple}
+            loading={isLoadingApple}
+            theme={ButtonTheme.Outline}
+            onClick={handleSignInWithApple}
+          >
+            <span>Continue with Apple</span>
+          </Button>
+        </div>
 
-          <div className="flex items-center justify-center gap-3 pt-2">
-            <hr className="w-full" />
-            <span className="text-zinc-600 dark:text-zinc-200">or</span>
-            <hr className="w-full" />
-          </div>
+        <div className="flex items-center justify-center gap-3 pt-2">
+          <hr className="w-full" />
+          <span className="text-zinc-600 dark:text-zinc-200">or</span>
+          <hr className="w-full" />
+        </div>
 
-          <AccountForm
-            errors={accountFormErrors}
-            isLoading={isLoadingEmail}
-            onChange={setForm}
-            onSubmit={handleEmailRequest}
-            value={form}
-          />
-        </>
+        <AccountForm
+          errors={accountFormErrors}
+          isLoading={isLoadingEmail}
+          onChange={setForm}
+          onSubmit={handleEmailRequest}
+          value={form}
+        />
       </div>
     </AuthLayout>
   );

@@ -42,8 +42,8 @@ const ButtonThemeStyles = {
     loading: "text-white dark:text-zinc-800"
   },
   [ButtonTheme.Secondary]: {
-    base: "bg-zinc-400 dark:bg-zinc-600 text-zinc-800 dark:text-zinc-200 shadow-inner drop-shadow ",
-    hover: "hover:bg-zinc-500 dark:hover:bg-zinc-700",
+    base: "bg-zinc-200 dark:bg-zinc-600 text-zinc-800 dark:text-zinc-200 ",
+    hover: "hover:bg-zinc-300 dark:hover:bg-zinc-700",
     focus:
       "focus:bg-zinc-200 dark:focus:bg-zinc-200 focus:ring-zinc-800/50 dark:focus:ring-white/50",
     loading: "text-zinc-800 dark:text-zinc-200"

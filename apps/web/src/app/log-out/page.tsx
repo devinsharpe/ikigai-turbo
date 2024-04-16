@@ -49,9 +49,9 @@ export default function LogOutPage() {
         </div>
 
         {user ? (
-          <div className="mt-4 flex cursor-pointer gap-4 rounded border border-zinc-300 bg-white p-2 hover:border-zinc-500 hover:bg-zinc-50 dark:border-zinc-400 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:hover:bg-zinc-700">
+          <div className="dark:bg-zinc-800dark:hover:bg-zinc-700 mt-4 flex cursor-pointer gap-4 rounded border border-zinc-300 bg-white p-2 hover:border-zinc-500 hover:bg-zinc-50 dark:border-zinc-400 dark:hover:bg-zinc-700">
             <div className="h-12 w-12 overflow-hidden rounded-full">
-              <img src={user.imageUrl} alt="" />
+              <img src={user.imageUrl} alt={`${user.fullName} profile image`} />
             </div>
             <div className="mr-auto">
               <h4 className="text-lg leading-tight md:text-xl">

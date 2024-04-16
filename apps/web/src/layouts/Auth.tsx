@@ -10,13 +10,15 @@ import Link from "next/link";
 import React from "react";
 
 interface AuthLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
-  linkHref: "sign-up" | "sign-in";
+  linkHref?: "sign-up" | "sign-in";
+  homeHref?: string;
 }
 
 export default function AuthLayout({
   className,
   children,
   linkHref,
+  homeHref = "/app",
   ...props
 }: AuthLayoutProps) {
   return (
@@ -34,12 +36,14 @@ export default function AuthLayout({
             className="items-center"
             asChild
           >
-            <Link href={`/${linkHref}`}>
-              {linkHref === "sign-in" ? "Sign In" : "Sign Up"}
-            </Link>
+            {linkHref && (
+              <Link href={`/${linkHref}`}>
+                {linkHref === "sign-in" ? "Sign In" : "Sign Up"}
+              </Link>
+            )}
           </Button>
           <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost} asChild>
-            <Link href="/">
+            <Link href={homeHref}>
               <HomeIcon />
             </Link>
           </Button>

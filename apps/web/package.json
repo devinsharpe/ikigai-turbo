@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@ikigai/web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.9",
-    "@repo/data": "^0.0.0",
-    "@repo/ui": "^0.0.0",
+    "@ikigai/data": "^0.0.0",
+    "@ikigai/ui": "^0.0.0",
     "@t3-oss/env-nextjs": "^0.9.2",
     "better-sqlite3": "^9.4.3",
     "drizzle-orm": "^0.29.4",
@@ -25,9 +25,9 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/tailwind-config": "*",
-    "@repo/typescript-config": "*",
+    "@ikigai/eslint-config": "*",
+    "@ikigai/tailwind-config": "*",
+    "@ikigai/typescript-config": "*",
     "@tailwindcss/forms": "^0.5.7",
     "@types/better-sqlite3": "^7.6.9",
     "@types/eslint": "^8.56.2",

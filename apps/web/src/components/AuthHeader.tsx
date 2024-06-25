@@ -1,5 +1,5 @@
-import { AppIcon } from "@repo/ui/components";
-import { twMerge } from "@repo/ui/lib";
+import { AppIcon } from "@ikigai/ui/components";
+import { twMerge } from "@ikigai/ui/lib";
 import Link from "next/link";
 
 interface AuthHeaderProps extends React.HTMLAttributes<HTMLDivElement> {

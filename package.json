@@ -1,6 +1,7 @@
 {
-  "name": "ikigai",
+  "name": "@ikigai/project",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo build",
     "with-env": "dotenv -e ./.env --",
@@ -11,10 +12,10 @@
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@ikigai/eslint-config": "*",
+    "@ikigai/typescript-config": "*",
     "prettier": "^3.2.5",
-    "turbo": "latest"
+    "turbo": "^2.0.5"
   },
   "engines": {
     "node": ">=18"
@@ -25,5 +26,6 @@
   ],
   "dependencies": {
     "dotenv-cli": "^7.4.1"
-  }
+  },
+  "packageManager": "npm@9.2.0"
 }

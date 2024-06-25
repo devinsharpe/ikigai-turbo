@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { fonts, twMerge } from "@repo/ui/lib";
+import { fonts, twMerge } from "@ikigai/ui/lib";
 
 import { ClerkProvider } from "@clerk/nextjs";
 

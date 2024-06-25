@@ -3,8 +3,8 @@ import {
   ButtonSize,
   ButtonTheme,
   ThemeToggle,
-} from "@repo/ui/components";
-import { twMerge } from "@repo/ui/lib";
+} from "@ikigai/ui/components";
+import { twMerge } from "@ikigai/ui/lib";
 import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";

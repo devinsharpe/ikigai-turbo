@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useClerk } from "@clerk/nextjs";
-import { Button, ButtonTheme, Spinner } from "@repo/ui/components";
+import { Button, ButtonTheme, Spinner } from "@ikigai/ui/components";
 import { BuildingIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

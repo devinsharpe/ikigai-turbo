@@ -9,7 +9,7 @@ import {
   ButtonSize,
   ButtonTheme,
   FloatingInput,
-} from "@repo/ui/components";
+} from "@ikigai/ui/components";
 import useAuthGuard from "~/hooks/useAuthGuard";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

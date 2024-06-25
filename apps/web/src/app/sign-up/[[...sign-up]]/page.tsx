@@ -11,7 +11,7 @@ import {
   PinInput,
   PinNode,
   ThemeToggle,
-} from "@repo/ui/components";
+} from "@ikigai/ui/components";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";

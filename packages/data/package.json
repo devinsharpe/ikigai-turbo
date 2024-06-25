@@ -1,5 +1,5 @@
 {
-  "name": "@repo/data",
+  "name": "@ikigai/data",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,8 +14,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@ikigai/eslint-config": "*",
+    "@ikigai/typescript-config": "*",
     "@types/node": "^20.11.24",
     "drizzle-kit": "^0.20.14",
     "eslint": "^8.57.0",

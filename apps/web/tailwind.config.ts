@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import sharedConfig from "@repo/tailwind-config";
+import sharedConfig from "@ikigai/tailwind-config";
 import tailwindForms from "@tailwindcss/forms";
 
 const config: Pick<Config, "content" | "darkMode" | "presets" | "plugins"> = {

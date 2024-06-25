@@ -1,10 +1,15 @@
 "use client";
 
+import { ComputerIcon, MoonIcon, SunIcon, type LucideIcon } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Button, { ButtonTheme } from "./Button";
-import { ComputerIcon, MoonIcon, SunIcon } from "lucide-react";
 
-const themeOptions = [
+type Theme = "system" | "light" | "dark";
+
+const themeOptions: {
+  theme: Theme;
+  component: LucideIcon;
+}[] = [
   { theme: "system", component: ComputerIcon },
   { theme: "light", component: SunIcon },
   { theme: "dark", component: MoonIcon }
@@ -33,15 +38,19 @@ function useMediaWatcher() {
 }
 
 interface ThemeToggleProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  onToggle?: (theme: Theme) => void | Promise<void>;
+}
 
 export default function ThemeToggle(props: ThemeToggleProps) {
   const [themeIndex, setThemeIndex] = useState(0);
   const systemTheme = useMediaWatcher();
 
   const handleToggle = () => {
-    if (themeIndex + 1 === themeOptions.length) setThemeIndex(0);
-    else setThemeIndex(themeIndex + 1);
+    const index = themeIndex + 1 === themeOptions.length ? 0 : themeIndex + 1;
+    setThemeIndex(index);
+    localStorage.setItem("theme", themeOptions[index]!.theme);
+    if (props.onToggle) props.onToggle(themeOptions[index]!.theme);
   };
 
   const CurrentIcon = useMemo(() => {
@@ -58,6 +67,14 @@ export default function ThemeToggle(props: ThemeToggleProps) {
     if (!el) return;
     el.setAttribute("data-mode", theme);
   }, [systemTheme, themeIndex]);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme)
+      setThemeIndex(
+        themeOptions.findIndex((theme) => theme.theme === storedTheme)
+      );
+  }, []);
 
   return (
     <Button theme={ButtonTheme.Ghost} {...props} onClick={handleToggle}>

@@ -6,27 +6,20 @@ import {
 } from "@repo/ui/components";
 import { twMerge } from "@repo/ui/lib";
 import { HomeIcon } from "lucide-react";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import React from "react";
 
-interface AuthLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
-  linkHref?: "sign-up" | "sign-in";
-  homeHref?: string;
-}
-
-export default function AuthLayout({
-  className,
+export default async function AuthLayout({
   children,
-  linkHref,
-  homeHref = "/app",
-  ...props
-}: AuthLayoutProps) {
+}: {
+  children: React.ReactNode;
+}) {
+  const cookieStore = cookies();
+  console.log(cookieStore);
+
   return (
-    <div
-      {...props}
-      className={twMerge("flex flex-col pl-4", className)}
-      style={{ height: "100dvh" }}
-    >
+    <div className={twMerge("flex flex-col pl-4")} style={{ height: "100dvh" }}>
       <div className="flex w-full items-stretch justify-between gap-4 p-4">
         <ThemeToggle />
         <div className="flex items-stretch justify-end gap-4">
@@ -36,14 +29,10 @@ export default function AuthLayout({
             className="items-center"
             asChild
           >
-            {linkHref && (
-              <Link href={`/${linkHref}`}>
-                {linkHref === "sign-in" ? "Sign In" : "Sign Up"}
-              </Link>
-            )}
+            <Link href="/sign-in">Sign In</Link>
           </Button>
           <Button size={ButtonSize.Icon} theme={ButtonTheme.Ghost} asChild>
-            <Link href={homeHref}>
+            <Link href="/">
               <HomeIcon />
             </Link>
           </Button>

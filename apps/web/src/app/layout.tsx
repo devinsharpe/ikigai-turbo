@@ -2,11 +2,16 @@ import "../styles/globals.css";
 import { fonts, twMerge } from "@repo/ui/lib";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { Viewport } from "next";
 
 export const metadata = {
   title: "Ikigai",
   description: "Productivty management done differently...",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
+
+export const viewport: Viewport = {
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

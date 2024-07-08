@@ -1,6 +1,6 @@
 {
   "out": "./migrations",
-  "schema": "./src/schema/index.ts",
+  "schema": "./dist/db/schema/index.js",
   "driver": "libsql",
   "verbose": true,
   "strict": true

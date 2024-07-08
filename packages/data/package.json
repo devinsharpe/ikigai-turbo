@@ -3,12 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "./db": "./src/index.ts"
+    ".": "./dist/index.js",
+    "./cache": "./dist/cache/index.js",
+    "./db": "./dist/db/index.js",
+    "./storage": "./dist/storage/index.js"
   },
   "scripts": {
+    "compile": "tsc",
+    "dev": "tsc --watch",
     "generate-migrations": "drizzle-kit generate:sqlite",
-    "migrate": "tsx ./src/migrate.ts"
+    "migrate": "npm run compile && node ./dist/migrate.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +23,7 @@
     "@ikigai/eslint-config": "*",
     "@ikigai/typescript-config": "*",
     "@types/node": "^20.11.24",
-    "drizzle-kit": "^0.20.14",
+    "drizzle-kit": "^0.22.8",
     "eslint": "^8.57.0",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3"
@@ -25,7 +31,12 @@
   "dependencies": {
     "@libsql/client": "^0.5.6",
     "@t3-oss/env-core": "^0.9.2",
-    "drizzle-orm": "^0.30.4",
+    "drizzle-orm": "^0.31.2",
+    "fastify-plugin": "^4.5.1",
+    "minio": "^8.0.1",
+    "nanoid": "^5.0.7",
+    "redis": "^4.6.14",
+    "redis-om": "^0.4.3",
     "zod": "^3.22.4"
   }
 }
